@@ -514,14 +514,14 @@ syn keyword phpKeyword echo continue case default break return goto as endif end
 " Only create keyword groupings for these if not doing folding, otherwise they take precedence over the regions
 " used for folding.
 if php_folding != 1
-  syn keyword phpKeyword if else elseif while do for foreach function switch contained
+  syn keyword phpKeyword if else elseif while do for foreach switch contained
 
   " Exception Keywords
   syn keyword phpKeyword try catch finally throw contained
 endif
 
 " Class Keywords
-syn keyword phpType class abstract extends interface implements static final var public private protected const trait contained
+syn keyword phpType class abstract extends interface implements static final var public private protected function const trait contained
 
 " Magic Methods
 syn keyword phpStatement __construct __destruct __call __callStatic __get __set __isset __unset __sleep __wakeup __toString __invoke __set_state __clone contained
@@ -689,17 +689,17 @@ endif
 syn match phpStaticClasses "\v\h\w+(::)@=" contained display
 
 " Class name
-syn keyword phpKeyword class contained
+syn keyword phpType class contained
       \ nextgroup=phpClass skipwhite skipempty
 syn match phpClass /\h\w*/ contained
 
 " Class extends
-syn keyword phpKeyword extends contained
+syn keyword phpType extends contained
       \ nextgroup=phpClassExtends skipwhite skipempty
 syn match phpClassExtends /\(\\\|\h\w*\)*\h\w*/ contained
 
 " Class implements
-syntax keyword phpKeyword implements contained
+syntax keyword phpType implements contained
       \ nextgroup=phpClassImplements skipwhite skipempty
 syntax match phpClassImplements contained
       \ nextgroup=phpClassDelimiter skipwhite skipempty /\(\\\|\h\w*\)*\h\w*/
@@ -717,7 +717,7 @@ syn match phpUseAlias /as\_s\+\h\w*/ contained contains=phpUseKeyword
 syn match phpUseKeyword /\(function\|as\)\_s\+/ contained contains=phpKeyword
 
 " Function name
-syn keyword phpKeyword function contained
+syn keyword phpType function contained
       \ nextgroup=phpFunction skipwhite skipempty
 syn match phpFunction /\h\w*/ contained
 
